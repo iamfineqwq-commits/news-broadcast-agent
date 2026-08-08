@@ -92,6 +92,13 @@ AI智能新闻助理Agent
 2.  点击界面右上角的 **“Execute Workflow”** (执行工作流) 按钮。
 3.  观察各节点的执行状态。如果一切配置正确，你最终会看到 `AI Agent` 节点输出一段结构化的 Markdown 文本。
 4.  （可选）在最后一个节点后，你可以连接一个飞书 Bot 节点，将此 Markdown 内容发送到你的飞书聊天中。
+<img width="1103" height="668" alt="b2079aa42fceca17ff91c7c5ed78135a" src="https://github.com/user-attachments/assets/f2bcbd0f-519f-43d0-9501-7334bc06bba1" />
+<img width="1165" height="505" alt="ffefade8aa4156fa29fec320f9a9c986" src="https://github.com/user-attachments/assets/ffc182ee-8353-4031-97b4-442f3dbed69c" />
+<img width="2253" height="1278" alt="6f8a3d5eb017b4d843f53e8e54c90229" src="https://github.com/user-attachments/assets/ea4bb044-5321-4642-8a4f-1c025f12a6d8" />
+
+<img width="566" height="592" alt="c66bc0b2aa2de29274d06bb6eaa0ba00" src="https://github.com/user-attachments/assets/52ff139f-d255-4c87-b213-663c62bae15f" />
+<img width="504" height="461" alt="bc8db504e8de77e041489d79b017d382" src="https://github.com/user-attachments/assets/3ea85fd2-bc2a-47d0-8b3b-8e4242cfdfcb" />
+
 
 ## 📁 项目结构
 news-broadcast-agent/
