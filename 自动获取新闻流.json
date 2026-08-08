@@ -1,0 +1,745 @@
+{
+  "name": "自动获取新闻流",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -800,
+        80
+      ],
+      "id": "cceabaf1-8822-40ca-9b19-7766e81996f0",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "maxItems": 6
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        144
+      ],
+      "id": "4c669ed8-81c4-4632-9bef-62cc729c6b2a",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "566c1ede-df27-432e-a605-ecba84e099a8",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "46152e4b-ef50-4578-b022-c56ac97844dc",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "485ee840-7ec6-4ee9-8349-864eb0ffe435",
+              "name": "内容",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "dd30c801-2217-420e-a337-73524894b650",
+              "name": "链接",
+              "value": "={{ $json.guid }}",
+              "type": "string"
+            },
+            {
+              "id": "d351f227-bb81-4d39-93e8-8d24771025af",
+              "name": "媒体",
+              "value": "聚合网站",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        144
+      ],
+      "id": "c9d48b63-2dae-43a4-946a-886bb8380b8e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c12a8604-4cf6-4450-b62a-34efc6041c92",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "41a62bce-c755-4cc2-9beb-05c33146fa8d",
+              "name": "内容",
+              "value": "={{ $json['content:encodedSnippet'] }}",
+              "type": "string"
+            },
+            {
+              "id": "65541a9d-7041-41ec-8b51-87cf75b76554",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "885000e0-7cf7-45e1-8757-ced1cd54fc00",
+              "name": "链接",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "3b253c13-45ff-4fbc-a12f-70e3f09c815c",
+              "name": "媒体",
+              "value": "国内媒体新闻",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        -64
+      ],
+      "id": "55ed2b84-1d0e-4da6-a2b0-2fbf8d9201e4",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4a6f9f45-3c11-4524-9be5-f730b56f17f3",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "f68170aa-2ca3-4e5b-a3cd-6de9caf18bc7",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "de78fd6b-2ee0-4d0e-9c62-7bc7fcff3f32",
+              "name": "内容",
+              "value": "={{ $json['content:encodedSnippet'] }}",
+              "type": "string"
+            },
+            {
+              "id": "92d70c7f-03ce-4608-bad1-41c7fae5f4a4",
+              "name": "链接",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "4bccfc6b-c914-47fd-a073-049e0ab52234",
+              "name": "媒体",
+              "value": "腾讯科技",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        192,
+        336
+      ],
+      "id": "b5e51e9f-0493-4494-821c-41b5903407e8",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "maxItems": 6
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        544
+      ],
+      "id": "6eef3627-1fb9-4d12-a413-0424bd68125c",
+      "name": "Limit1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a45690cf-ad3c-45eb-b247-573cbeb33085",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "6ab5382e-0ab1-4f1f-a24f-37558243d508",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "c36ff096-9fa6-46f1-9b19-610887b9eed7",
+              "name": "内容",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8af9729f-fd49-4063-a45d-fe381ac46654",
+              "name": "链接",
+              "value": "={{ $json.guid }}",
+              "type": "string"
+            },
+            {
+              "id": "804fa287-05c3-497e-be0e-b7ee2e3ef13b",
+              "name": "媒体",
+              "value": "国内媒体",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        544
+      ],
+      "id": "6f8e797d-4968-49dc-810a-ba7fe9bbbb6d",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "url": "https://plink.anyfeeder.com/weixin/AI_era",
+        "options": {
+          "ignoreSSL": true
+        }
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        -16,
+        -64
+      ],
+      "id": "08ebb46a-271d-430a-ab2b-f14372ec45f2",
+      "name": "xinzhiyuan"
+    },
+    {
+      "parameters": {
+        "url": "https://plink.anyfeeder.com/newscn/whxw",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        -240,
+        144
+      ],
+      "id": "a0ffc5be-f54e-4973-b130-c098ea8628ad",
+      "name": "aibase"
+    },
+    {
+      "parameters": {
+        "url": "https://plink.anyfeeder.com/weixin/qqtech",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        -16,
+        336
+      ],
+      "id": "6ef8db04-a350-428e-b1e3-a87d77bec5f2",
+      "name": "tengxunkeji"
+    },
+    {
+      "parameters": {
+        "url": "https://www.qbitai.com/feed",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        -240,
+        544
+      ],
+      "id": "f49db25e-b84e-4bc4-b350-d330ab77ac0e",
+      "name": "liangziwei"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a291383a-2989-4e4f-bf9a-34a46c06c3d8",
+              "leftValue": "={{ new Date($json[\"日期\"]).toISOString().slice(0,10) }}\n",
+              "rightValue": "={{ new Date().toISOString().slice(0,10) }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "04261e50-217f-4338-aa39-2bcfcb5c774e",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        560,
+        320
+      ],
+      "id": "468cee60-62c1-4af7-af75-47ef48791f3c",
+      "name": "filter_today"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 21
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -720,
+        416
+      ],
+      "id": "667f8991-4cc5-403f-989e-ed10d55fa6a2",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=把你收到的新闻信息都整理成干净的格式，内容需要总结为摘要，以下是新闻：\n 标题 ：{{ $json['标题'] }} 内容：{{ $json['内容'] }} 日期：{{ $json['日期'] }} 链接：{{ $json['链接'] }} 媒体：{{ $json['媒体'] }}",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        736,
+        288
+      ],
+      "id": "cf993ea5-da08-455c-b3b5-125f2acb4432",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a8acfac0-6be7-4bd7-b685-744f020dd6b6",
+              "name": "标题",
+              "value": "={{ $json.output['标题'] }}",
+              "type": "string"
+            },
+            {
+              "id": "55f35fb8-e5dc-4e29-be42-d04d8a5ddf38",
+              "name": "内容",
+              "value": "={{ $json.output['内容'] }}",
+              "type": "string"
+            },
+            {
+              "id": "4899cbc9-b256-4378-b030-5ed9c4b9f491",
+              "name": "日期",
+              "value": "={{ $json.output['日期'] }}",
+              "type": "string"
+            },
+            {
+              "id": "21625050-7ccd-48a3-834b-cab3e03f833f",
+              "name": "链接",
+              "value": "={{ $json.output['链接'] }}",
+              "type": "string"
+            },
+            {
+              "id": "7cfb38ff-e2fc-4d06-b3ca-74b6018f80f0",
+              "name": "媒体",
+              "value": "={{ $json.output['媒体'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1104,
+        240
+      ],
+      "id": "b4ca6f47-3e51-4dbf-be9e-aa525c537d58",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n    \"标题\":\"xxxx\",\n\t\"日期\": \"\",\n\t\"内容\": \"国内第一个 ai 大模型诞生了\",\n  \"媒体\":\" 国内媒体新\",\n  \"链接\":\"http://www.baidu.com\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        864,
+        496
+      ],
+      "id": "8237c4ba-d264-43a8-8c06-5d77eb5a4e55",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "resource": "base",
+        "operation": "createRecord",
+        "app_token": {
+          "__rl": true,
+          "value": "KaOfbAs7XakxymsfhzJc1S4snPV",
+          "mode": "id"
+        },
+        "table_id": {
+          "__rl": true,
+          "value": "tblBWsNfdStCKjaY",
+          "mode": "id"
+        },
+        "body": "={\n  \"fields\": {\n    \"标题\": \"{{$json['标题']}}\",\n    \"日期\": \"{{$json['日期']}}\",\n    \"内容\": \"{{$json['内容']}}\",\n    \"链接\": \"{{$json['链接']}}\",\n    \"媒体\": \"{{$json['媒体']}}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-feishu-lark.lark",
+      "typeVersion": 1,
+      "position": [
+        1296,
+        96
+      ],
+      "id": "2f59d044-e1ce-4381-9cdd-15f69b46add9",
+      "name": "CreateRecord base",
+      "webhookId": "c4d3fa26-a54b-4ac2-879b-4c9d7b434f8d",
+      "credentials": {
+        "larkApi": {
+          "id": "MW6j794tF2BypDOu",
+          "name": "Lark Tenant Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// 格式化日期为 YYYY-MM-DD\n// 适配你 Edit Fields 输出的数据结构\n// ============================================\n\nfor (const item of $input.all()) {\n  // 获取原始日期字符串\n  const rawDate = item.json[\"日期\"];\n\n  let formattedDate = null;\n  let parseSuccess = false;\n\n  if (rawDate) {\n    try {\n      // 使用 JavaScript 内置 Date 解析\n      const dateObj = new Date(rawDate);\n      \n      // 验证解析是否成功\n      if (!isNaN(dateObj.getTime())) {\n        const year = dateObj.getFullYear();\n        const month = String(dateObj.getMonth() + 1).padStart(2, '0');\n        const day = String(dateObj.getDate()).padStart(2, '0');\n        formattedDate = `${year}-${month}-${day}`;\n        parseSuccess = true;\n      }\n    } catch (e) {\n      // 解析失败则保留原始值\n    }\n  }\n\n  // 将格式化的结果写回 item.json\n  // 替换原始字段，或创建新字段，这里采用替换\n  item.json[\"日期\"] = parseSuccess ? formattedDate : (rawDate || null);\n  // 如果你需要保留原始日期用于对比，可以新建一个字段：\n  // item.json[\"日期_原始\"] = rawDate;\n  // item.json[\"日期_标准化\"] = formattedDate;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        144
+      ],
+      "id": "7b1ea576-c083-43a2-a780-faf1d276d1ea",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-deepseek-chat-model.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        672,
+        544
+      ],
+      "id": "c8f6d7d1-3283-4fbf-97e2-5943bc723361",
+      "name": "DeepSeek Chat Model1",
+      "credentials": {
+        "deepseekApi": {
+          "id": "KqpoW2oVOTCIrUkB",
+          "name": "DeepSeek account 3"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "xinzhiyuan",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "aibase",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "tengxunkeji",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "liangziwei",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "xinzhiyuan": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aibase": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tengxunkeji": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "liangziwei": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "filter_today": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "xinzhiyuan",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "aibase",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "tengxunkeji",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "liangziwei",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "CreateRecord base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "filter_today",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "6aacc077-0761-49b1-a4a9-6c28b3d997ce",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "412c3b5f6a5902583bcbc1b8d06badaeb33c5e9c50efa1781e456167afaedb88"
+  },
+  "nodeGroups": [],
+  "id": "oMy9q42NpxwgREbf",
+  "tags": []
+}
