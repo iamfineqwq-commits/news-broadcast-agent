@@ -349,8 +349,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -720,
-        416
+        -896,
+        352
       ],
       "id": "667f8991-4cc5-403f-989e-ed10d55fa6a2",
       "name": "Schedule Trigger1"
@@ -358,7 +358,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=把你收到的新闻信息都整理成干净的格式，内容需要总结为摘要，以下是新闻：\n 标题 ：{{ $json['标题'] }} 内容：{{ $json['内容'] }} 日期：{{ $json['日期'] }} 链接：{{ $json['链接'] }} 媒体：{{ $json['媒体'] }}",
+        "text": "=把你收到的新闻信息都整理成干净的格式，内容需要总结为摘要。同时你必须对这条新闻进行重要性评估和领域分类。\n\n【重要性评分标准（1-5分整数，5分最高，评分时必须给出一句理由）】\n- 5分：行业级重大事件——头部公司发布旗舰大模型、重大收购合并、里程碑式技术突破\n- 4分：重要进展——知名公司重要产品更新、大额融资、重要政策出台\n- 3分：一般动态——常规产品更新、普通融资、行业趋势分析\n- 2分：边缘资讯——小众工具、边缘玩家动态、泛娱乐化AI内容\n- 1分：无实质信息——标题党、广告软文、旧闻翻炒\n\n【领域分类（必须且只能从以下7个选项中选择一个，禁止自创分类）】\n大模型发布 / 芯片与硬件 / 产品与应用 / 投融资 / 政策监管 / 学术研究 / 行业动态\n\n以下是新闻：\n 标题：{{ $json['标题'] }}\n 内容：{{ $json['内容'] }}\n 日期：{{ $json['日期'] }}\n 链接：{{ $json['链接'] }}\n 媒体：{{ $json['媒体'] }}",
         "hasOutputParser": true,
         "batching": {}
       },
@@ -404,6 +404,24 @@
               "name": "媒体",
               "value": "={{ $json.output['媒体'] }}",
               "type": "string"
+            },
+            {
+              "id": "b1f2a3c4-0001-4a00-9000-000000000001",
+              "name": "重要性",
+              "value": "={{ String($json.output['重要性'] || '') }}",
+              "type": "string"
+            },
+            {
+              "id": "b1f2a3c4-0002-4a00-9000-000000000002",
+              "name": "重要性理由",
+              "value": "={{ String($json.output['重要性理由'] || '') }}",
+              "type": "string"
+            },
+            {
+              "id": "b1f2a3c4-0003-4a00-9000-000000000003",
+              "name": "领域",
+              "value": "={{ String($json.output['领域'] || '') }}",
+              "type": "string"
             }
           ]
         },
@@ -420,7 +438,7 @@
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n    \"标题\":\"xxxx\",\n\t\"日期\": \"\",\n\t\"内容\": \"国内第一个 ai 大模型诞生了\",\n  \"媒体\":\" 国内媒体新\",\n  \"链接\":\"http://www.baidu.com\"\n}"
+        "jsonSchemaExample": "{\n    \"标题\": \"xxxx\",\n    \"日期\": \"\",\n    \"内容\": \"国内第一个 ai 大模型诞生了\",\n    \"媒体\": \"国内媒体新闻\",\n    \"链接\": \"http://www.baidu.com\",\n    \"重要性\": \"5\",\n    \"重要性理由\": \"国内首个AI大模型发布，属于行业级里程碑事件\",\n    \"领域\": \"大模型发布\"\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
@@ -437,15 +455,15 @@
         "operation": "createRecord",
         "app_token": {
           "__rl": true,
-          "value": "KaOfbAs7XakxymsfhzJc1S4snPV",
+          "value": "YOUR_BITABLE_APP_TOKEN",
           "mode": "id"
         },
         "table_id": {
           "__rl": true,
-          "value": "tblBWsNfdStCKjaY",
+          "value": "YOUR_BITABLE_TABLE_ID",
           "mode": "id"
         },
-        "body": "={\n  \"fields\": {\n    \"标题\": \"{{$json['标题']}}\",\n    \"日期\": \"{{$json['日期']}}\",\n    \"内容\": \"{{$json['内容']}}\",\n    \"链接\": \"{{$json['链接']}}\",\n    \"媒体\": \"{{$json['媒体']}}\"\n  }\n}",
+        "body": "={\n  \"fields\": {\n    \"标题\": \"{{$json['标题']}}\",\n    \"日期\": \"{{$json['日期']}}\",\n    \"内容\": \"{{$json['内容']}}\",\n    \"链接\": \"{{$json['链接']}}\",\n    \"媒体\": \"{{$json['媒体']}}\",\n    \"重要性\": \"{{$json['重要性']}}\",\n    \"重要性理由\": \"{{$json['重要性理由']}}\",\n    \"领域\": \"{{$json['领域']}}\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-feishu-lark.lark",
@@ -459,7 +477,7 @@
       "webhookId": "c4d3fa26-a54b-4ac2-879b-4c9d7b434f8d",
       "credentials": {
         "larkApi": {
-          "id": "MW6j794tF2BypDOu",
+          "id": "YOUR_N8N_LARK_CREDENTIAL_ID",
           "name": "Lark Tenant Token account 2"
         }
       }
@@ -491,7 +509,7 @@
       "name": "DeepSeek Chat Model1",
       "credentials": {
         "deepseekApi": {
-          "id": "KqpoW2oVOTCIrUkB",
+          "id": "YOUR_N8N_DEEPSEEK_CREDENTIAL_ID",
           "name": "DeepSeek account 3"
         }
       }
@@ -734,7 +752,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "6aacc077-0761-49b1-a4a9-6c28b3d997ce",
+  "versionId": "0eff0677-5841-4a89-baf9-6e7e73a0b1c7",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "412c3b5f6a5902583bcbc1b8d06badaeb33c5e9c50efa1781e456167afaedb88"
