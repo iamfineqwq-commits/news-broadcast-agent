@@ -23,7 +23,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "<｜im_start｜>system\\nYou are a helpful assistant. Do NOT use thinking mode. Do NOT output any reasoning content. Do NOT generate . Provide the final answer directly.\\n<｜im_end｜>\n\n你是我的专属AI助理“新闻报通”！你的使命是帮我洞察最新的AI动态，并结合我的工作日程，智能推荐感兴趣的内容和安排行程。在没有行业大事发生时，你也会关心我的生活，推荐放松娱乐活动。最终你需要将所有分析和建议，整合为一个适合在飞书卡片中展示的Markdown格式文本块。保持乐观、敏锐、有创造力！\n\n我将为你提供两份数据：\n1.  **新闻数据（news_items）**：一个列表，包含从飞书多维表格查询到的新闻。列表中的每条新闻都包含以下字段：`标题`、`日期`、`媒体`、`内容`、`链接`。你需要提取并展示这些信息。\n2.  **日程数据（calendar_events）**：一个列表，包含从飞书日历查询到的未来7天日程。列表中的每条日程都包含以下字段：`summary`（日程标题）、`start_time`（开始时间）、`end_time`（结束时间）。你需要提取并展示这些信息。\n\n你的任务是根据以上数据，生成一段完整的、纯净的Markdown格式文本，用于在飞书卡片中展示。请严格按照以下结构组织你的回复，**不要**在回复中添加任何Markdown代码块包裹标记（如 ```markdown）或多余的解释。\n\n**Markdown输出结构要求：**\n\n### 🚀 AI圈今日速递与专属建议\n\n**🌟 今日AI新闻看板：**\n[此处，请根据是否收到新闻数据来生成不同内容]\n- 如果收到了新闻列表，请逐条列出所有新闻。每条新闻请按以下格式呈现：\n  *   ---\n  *   **标题：** [从数据中提取的标题]\n  *   **发布日期：** [从数据中提取的日期]\n  *   **发布媒体：** [从数据中提取的媒体]\n  *   **核心摘要：** [从数据中提取的内容]\n  *   **原文链接：** [点击查看详情]([从数据中提取的链接])\n- 如果没有收到任何新闻，则在此处直接说明：“今天AI领域风平浪静，暂未捕获到新的AI大新闻。是时候出门活动活动了！”\n\n**📅 我的近期日程概览：**\n[此处，请根据是否收到日程数据来生成不同内容]\n- 如果收到了日程列表，请逐条列出未来几天的日程。每条日程请按以下格式呈现：\n  *   **[从数据中提取的开始时间]** - **[从数据中提取的日程标题]** (持续至 [从数据中提取的结束时间])\n- 如果没有收到任何日程，则在此处说明：“未来7天暂无日程安排。”\n\n**💡 综合建议与排期参考：**\n[此部分最重要，请根据新闻和日程数据综合判断，生成一个具体、有价值的建议。严格遵循以下逻辑]：\n1.  **优先看日程**：如果日程列表显示未来几天日程很满（例如，几乎每天都有多个事件），则无论新闻多少，建议都围绕“时间紧凑，专注工作，新闻存档”来展开。例如：“老板，接下来几天日程紧凑，建议将今天的新闻信息先存档，待有空档再阅读。目前先专注已安排的工作。”\n2.  **若有新闻且日程有空**：分析新闻内容，找出最有价值或最有趣的一条，结合空闲时段给出阅读建议。例如：“老板，今天新闻不少！**《[具体新闻标题]》** 讨论热度最高，建议可以在 [某个空闲时段] 详细看看。”\n3.  **若新闻质量一般但日程有空**：可指出哪条新闻尚可关注，但更建议利用空闲时间放松。例如：“今天的几条新闻中，《[某新闻标题]》可以略作关注，但若无特别感兴趣，[某个空闲时段]或许更适合外出放松。”\n4.  **若无新闻但日程有空**：主动利用空闲时间推荐一项具体的放松活动（如散步、看电影、喝咖啡等）。例如：“老板，今日无AI大新闻，正好给大脑放个假！我看您 [某个空闲时段] 有空，不如去附近的公园散散步？劳逸结合！”\n\n**执行要求：**\n- 你的最终回复必须且仅仅是按照上述结构生成的完整Markdown文本。\n- 直接从 `### 🚀 AI圈今日速递与专属建议` 开始，到最后一个建议结束。开头和结尾都不要有任何额外内容。\n- 确保你从数据中提取的信息（标题、日期、链接等）准确无误。\n- 语气要符合“乐观、敏锐、有创造力”的设定，建议要具体、有洞察力。\n\n请直接给出结论，不要分析过程。",
+        "text": "<｜im_start｜>system\\nYou are a helpful assistant. Do NOT use thinking mode. Do NOT output any reasoning content. Do NOT generate . Provide the final answer directly.\\n<｜im_end｜>\n\n你是我的专属AI助理“新闻报通”！你的使命是帮我洞察最新的AI动态，并结合我的工作日程，智能推荐感兴趣的内容和安排行程。在没有行业大事发生时，你也会关心我的生活，推荐放松娱乐活动。最终你需要将所有分析和建议，整合为一个适合在飞书卡片中展示的Markdown格式文本块。保持乐观、敏锐、有创造力！\n\n我将为你提供两份数据：\n1.  **新闻数据（news_items）**：一个列表，包含从飞书多维表格查询到的新闻。列表中的每条新闻都包含以下字段：`标题`、`日期`、`媒体`、`内容`、`链接`、`重要性`（1-5分）、`重要性理由`、`领域`。你需要提取并利用这些信息组织新闻看板。\n2.  **日程数据（calendar_events）**：一个列表，包含从飞书日历查询到的未来7天日程。列表中的每条日程都包含以下字段：`summary`（日程标题）、`start_time`（开始时间）、`end_time`（结束时间）。你需要提取并展示这些信息。\n\n你的任务是根据以上数据，生成一段完整的、纯净的Markdown格式文本，用于在飞书卡片中展示。请严格按照以下结构组织你的回复，**不要**在回复中添加任何Markdown代码块包裹标记（如 ```markdown）或多余的解释。\n\n**Markdown输出结构要求：**\n\n### 🚀 AI圈今日速递与专属建议\n\n**🌟 今日AI新闻看板：**\n[此处，请根据是否收到新闻数据来生成不同内容]\n- 如果收到了新闻列表，请按以下规则组织看板：\n  1. **全局排序**：将所有新闻按“重要性”字段从高到低排序。\n  2. **今日重点（重要性≥4分的新闻）**：置顶完整展示，每条格式如下：\n     *   ---\n     *   **标题：** [标题] ⭐[重要性]/5 · [重要性理由]\n     *   **领域：** [领域] · **发布日期：** [日期] · **发布媒体：** [媒体]\n     *   **核心摘要：** [内容]\n     *   **原文链接：** [点击查看详情]([链接])\n  3. **其余新闻（重要性<4分）**：按“领域”分组展示，每个领域一个小节，格式如下：\n     *   **【[领域名]】**\n     *   - [标题]（[媒体] · [重要性]/5）—— [一句话极简摘要]，[查看原文]([链接])\n  4. 补充规则：若某个领域只有一条新闻，直接单列即可；若所有新闻重要性都≥4分，则全部按“今日重点”格式展示，不必分组；若某条新闻缺少重要性或领域字段，则按“今日重点”格式展示并归入“行业动态”。\n- 如果没有收到任何新闻，则在此处直接说明：“今天AI领域风平浪静，暂未捕获到新的AI大新闻。是时候出门活动活动了！”\n\n**📅 我的近期日程概览：**\n[此处，请根据是否收到日程数据来生成不同内容]\n- 如果收到了日程列表，请逐条列出未来几天的日程。每条日程请按以下格式呈现：\n  *   **[从数据中提取的开始时间]** - **[从数据中提取的日程标题]** (持续至 [从数据中提取的结束时间])\n- 如果没有收到任何日程，则在此处说明：“未来7天暂无日程安排。”\n\n**💡 综合建议与排期参考：**\n[此部分最重要，请根据新闻和日程数据综合判断，生成一个具体、有价值的建议。严格遵循以下逻辑]：\n1.  **优先看日程**：如果日程列表显示未来几天日程很满（例如，几乎每天都有多个事件），则无论新闻多少，建议都围绕“时间紧凑，专注工作，新闻存档”来展开。例如：“老板，接下来几天日程紧凑，建议将今天的新闻信息先存档，待有空档再阅读。目前先专注已安排的工作。”\n2.  **若有新闻且日程有空**：优先依据“重要性”评分和“重要性理由”找出最有价值的一条（重要性≥4分的优先推荐），结合空闲时段给出阅读建议。例如：“老板，今天新闻不少！**《[具体新闻标题]》** 讨论热度最高，建议可以在 [某个空闲时段] 详细看看。”\n3.  **若新闻质量一般但日程有空**：可指出哪条新闻尚可关注，但更建议利用空闲时间放松。例如：“今天的几条新闻中，《[某新闻标题]》可以略作关注，但若无特别感兴趣，[某个空闲时段]或许更适合外出放松。”\n4.  **若无新闻但日程有空**：主动利用空闲时间推荐一项具体的放松活动（如散步、看电影、喝咖啡等）。例如：“老板，今日无AI大新闻，正好给大脑放个假！我看您 [某个空闲时段] 有空，不如去附近的公园散散步？劳逸结合！”\n\n**执行要求：**\n- 你的最终回复必须且仅仅是按照上述结构生成的完整Markdown文本。\n- 直接从 `### 🚀 AI圈今日速递与专属建议` 开始，到最后一个建议结束。开头和结尾都不要有任何额外内容。\n- 确保你从数据中提取的信息（标题、日期、链接等）准确无误。\n- 语气要符合“乐观、敏锐、有创造力”的设定，建议要具体、有洞察力。\n\n请直接给出结论，不要分析过程。",
         "hasOutputParser": true,
         "options": {
           "systemMessage": "/no_think\n你是一个直接回答的助手。严禁输出任何推理过程、思考步骤、计划或分析。只输出最终答案，且答案要简洁。不要使用\"首先\"、\"接下来\"、\"我的思路是\"等词语。\n",
@@ -42,7 +42,7 @@
         208,
         0
       ],
-      "id": "fae0b5edxxxxxxx6eb1de",
+      "id": "fae0b5ed-c5d6-45d8-bb7b-36c9076eb1de",
       "name": "AI Agent",
       "alwaysOutputData": false,
       "notesInFlow": false,
@@ -54,12 +54,12 @@
         "operation": "searchRecords",
         "app_token": {
           "__rl": true,
-          "value": "KaOfbxxxxxxxxxxx1S4snPV",
+          "value": "YOUR_BITABLE_APP_TOKEN",
           "mode": "id"
         },
         "table_id": {
           "__rl": true,
-          "value": "tblBWsNfdStCKjaY",
+          "value": "YOUR_BITABLE_TABLE_ID",
           "mode": "id"
         },
         "body": "={\n  \"filter\": {\n    \"conjunction\": \"or\",\n    \"conditions\": [\n      {\n        \"field_name\": \"日期\",\n        \"operator\": \"is\", \n        \"value\": [\"{{ $('Code in JavaScript').item.json.todayString }}\"]\n      },\n      {\n        \"field_name\": \"日期\",\n        \"operator\": \"is\", \n        \"value\": [\"{{ $('Code in JavaScript').item.json.yesterdayString }}\"]\n      }\n    ]\n  }\n}",
@@ -71,12 +71,12 @@
         256,
         368
       ],
-      "id": "153160fe-xxxxxxxxx02b268",
+      "id": "153160fe-efe5-460a-be88-5b5a0002b268",
       "name": "SearchRecords base in Lark",
       "webhookId": "3e8d3d6e-d144-4ccf-b46f-429bbbba0894",
       "credentials": {
         "larkApi": {
-          "id": "MW6jxxxxxxxxxxOu",
+          "id": "YOUR_N8N_LARK_CREDENTIAL_ID",
           "name": "Lark Tenant Token account 2"
         }
       }
@@ -91,7 +91,7 @@
         -224,
         -32
       ],
-      "id": "f3070c73-9xxxxxxbb86",
+      "id": "f3070c73-9d0c-47e8-ba63-7f5d32b5bb86",
       "name": "Code in JavaScript"
     },
     {
@@ -104,7 +104,7 @@
         -32,
         0
       ],
-      "id": "bbcea47fxxxxxxx95267cb",
+      "id": "bbcea47f-5a95-467c-904c-6d43595267cb",
       "name": "Code in JavaScript1"
     },
     {
@@ -113,7 +113,7 @@
         "operation": "getEventList",
         "calendar_id": {
           "__rl": true,
-          "value": "feishu.cn_Y0LxrdNDEKJlA6WgEgukSb@group.calendar.feishu.cn",
+          "value": "YOUR_FEISHU_CALENDAR_ID",
           "mode": "id"
         },
         "options": {}
@@ -124,12 +124,12 @@
         448,
         288
       ],
-      "id": "ffxxxxxxx8d53",
+      "id": "ffe7ca74-7912-4e85-8231-31411e0e8d53",
       "name": "GetEventList calendar in Lark",
-      "webhookId": "9a8xxxxxx38fb98",
+      "webhookId": "9a8b2957-affd-419c-a440-efd6e538fb98",
       "credentials": {
         "larkApi": {
-          "id": "MW6xxxxxu",
+          "id": "YOUR_N8N_LARK_CREDENTIAL_ID",
           "name": "Lark Tenant Token account 2"
         }
       }
@@ -137,7 +137,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxxxxxx",
+        "url": "https://open.feishu.cn/open-apis/bot/v2/hook/YOUR_FEISHU_BOT_WEBHOOK_TOKEN",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"msg_type\": \"interactive\",\n  \"card\": {\n    \"schema\": \"2.0\",\n    \"config\": {\n      \"update_multi\": true,\n      \"style\": {\n        \"text_size\": {\n          \"normal_v2\": {\n            \"default\": \"normal\",\n            \"pc\": \"normal\",\n            \"mobile\": \"heading\"\n          }\n        }\n      }\n    },\n    \"body\": {\n      \"direction\": \"vertical\",\n      \"padding\": \"12px 12px 12px 12px\",\n      \"elements\": [\n        {\n          \"tag\": \"markdown\",\n          \"content\": \"{{ $json.output ? JSON.stringify($json.output).slice(1, -1) : '' }}\",\n          \"text_align\": \"left\",\n          \"text_size\": \"normal_v2\",\n          \"margin\": \"0px 0px 0px 0px\"\n        }\n      ]\n    },\n    \"header\": {\n      \"title\": {\n        \"tag\": \"plain_text\",\n        \"content\": \"AI News\"\n      },\n      \"subtitle\": {\n        \"tag\": \"plain_text\",\n        \"content\": \"\"\n      },\n      \"template\": \"blue\",\n      \"padding\": \"12px 12px 12px 12px\"\n    }\n  }\n}\n",
@@ -149,7 +149,7 @@
         560,
         0
       ],
-      "id": "xxx",
+      "id": "b28b8346-e73c-4a36-91c8-76615e134f4f",
       "name": "HTTP Request"
     },
     {
@@ -162,11 +162,11 @@
         64,
         224
       ],
-      "id": "b2914eb2-xxxxxxx654db",
+      "id": "b2914eb2-2761-4772-b0aa-152cd63654db",
       "name": "DeepSeek Chat Model",
       "credentials": {
         "deepseekApi": {
-          "id": "KqxxxxkB",
+          "id": "YOUR_N8N_DEEPSEEK_CREDENTIAL_ID",
           "name": "DeepSeek account 3"
         }
       }
